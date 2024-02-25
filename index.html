@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <style> .highlight{
+  color: orange;
+}</style>
+</head>
+<body style="background-color:Khaki;">
+    <center>
+<h4 style="background-color: orange;"> My Country: India </h4>
+<br>
+<img src="https://assets.gqindia.com/photos/62f9c75e0d4e31701fb885d6/1:1/w_1080,h_1080,c_limit/Lesser-known-facts-about-India.jpeg width:"100px" height="200px">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="parent">
+<div contenteditable="true" id="test">
+<p>India is my mother country, and I love it very much. The people of India are very honest and truthful in nature. People of various unique traditions and cultures live here together without any problem. The mother tongue of my country is Hindi however many languages are spoken here by people of different religions without any foundation. India is a great country of natural beauty where great people took birth from time to time and did great works. Indians are heart-touching in nature and heartily welcome guests from other countries. In India, the Indian philosophy of life is called Sanatan Dharma and has become the main factor in maintaining unity in diversity here. India is a republic country where its citizens have the power to take decisions about the country. There are many natural sceneries, places, monuments, historical heritage of ancient time, etc., which attracts people's minds from every corner of the world. India is famous for its spiritual works, Yoga, martial arts, etc. A huge crowd of pilgrims and devotees come here to see and enjoy the beauty of famous places, temples, and other world heritage sites in India.</p>
+</div>
+</div>
+<h4 style="background-color: ForestGreen;"> Find the word in paragraph</h4>
+<br>
+Search text: <input type="text" id="keyWord" />
+   </center>
+  <script>  $('#keyWord').on('input', function (e) {
+    var text = $(this).val();
+    // escaping string for use in regex
+    text = text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+    var re = new RegExp(text, 'gi');
+ 
+    $('#test').children().each(function () {
+        // if no text input clear out previous .highlight spans
+        if(!text){
+            $(this).html($(this).text());
+            return;
+        }
+        // if match for regex insert .highlight class
+        $(this).html($(this).text().replace(re, function(match){
+            return '<span class="highlight">'+ match   +'</span>';
+        })); 
+    });
+});</script>
+</body>
+</html>
